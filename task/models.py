@@ -1,33 +1,34 @@
 from django.db import models
 from user.models import User
 from project.models import Project
-
-
-class ModelBased(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
-    
-    class Meta:
-        abstract = True
+from base.models import ModelBased
 
 
 class Task(ModelBased):
     id=models.AutoField(primary_key=True)
-    user_id=models.ManyToManyField(User, related_name='user')   #다대다 
+#     author=models.ManyToManyField(User, related_name='author')   #다대다 
     project_id=models.ForeignKey(Project, 
                                  on_delete=models.CASCADE,
                                  related_name='project')#다대일
     title=models.TextField(max_length=200, blank=False)
     description=models.TextField() #long text
-    due_date=models.DateTimeField()
-    """
-    class status(models.IntegerChoices):
-            Open = 1
-            InProgress = 2
-            Completed = 3
-            closed = 4
-    """
-    status=models.IntegerField(default=1)
-    
+    due_date=models.DateTimeField(null=True)
+    status_choices = (
+            (1,'Open'),
+            (2,'InProgress'),
+            (3,'Completed'),
+            (4,'closed')
+    )
+    status=models.SmallIntegerField(default=1, choices=status_choices)
+    priority_choices = (
+            (1,'PM'),
+            (2,'SELF')
+    )
+    priority=models.SmallIntegerField(default=1, choices=priority_choices)
+
+#specify table name     
+    class Meta:
+            db_table = 'Task'
+            
     def __repr__(self): #개발자끼리의 공유(보여주기용) <-> str
-            return self.user_id +':' +self.title #task tile과 name이 뜸
+            return self.user_id +':' +self.title #task tile과 name이 뜸            

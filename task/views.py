@@ -14,3 +14,12 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     name = 'Task-detail'
+
+
+def get_query(self):
+    
+    return Task.objects.filter(project_id=self.kwargs['project'])
+
+
+
+

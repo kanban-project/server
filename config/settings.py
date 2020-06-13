@@ -40,10 +40,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'user.apps.UserConfig',
     'project.apps.ProjectConfig',
-    'task.apps.TaskConfig'
+    'task.apps.TaskConfig',
+    'base.apps.BaseConfig',
+    'corsheaders'
+
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,6 +56,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# CORS_ORIGIN_WHITELIST = ['localhost:8000']
+
 
 ROOT_URLCONF = 'config.urls'
 
@@ -62,7 +69,6 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -79,10 +85,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'back_end_server',
+        'USER': 'julia',
+        'PASSWORD': 'Tkfkdgo2!',
+        'HOST': 'localhost',
+        'PORT':    '3306'
     }
-}
+}    
 
 
 # Password validation

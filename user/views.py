@@ -14,10 +14,10 @@ class UserList(generics.ListCreateAPIView):
 
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    name = 'board-list'
+    name = 'user-list'
 
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    name = 'board-detail'
+    name = 'user-detail'
