@@ -17,6 +17,9 @@ tests/.coverage
 build/
 tests/report/
 
+#숨김파일
+settings copy.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
