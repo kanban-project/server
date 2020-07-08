@@ -9,15 +9,20 @@ class TaskList(generics.ListCreateAPIView):
     serializer_class = TaskSerializer
     name = 'Task-list'
 
-def get_query(self):
-    
-    return Task.objects.filter(project_id=self.kwargs['project'])
 
 class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     name = 'Task-detail'
+
+class Project_TaskList(generics.ListAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+    name = 'Project_TaskList'
+    
+    def get_queryset(self):
+        return Task.objects.filter(project_id=self.kwargs['project'])
 
 
 

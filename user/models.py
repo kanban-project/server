@@ -13,6 +13,6 @@ class User(ModelBased): #다중상속을 피하기위해
   
   #specify table name     
     class Meta:
-            db_table = 'User'
+            db_table = 'Kanban_User'
 
  

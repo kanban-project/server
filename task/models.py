@@ -28,7 +28,7 @@ class Task(ModelBased):
 
 #specify table name     
     class Meta:
-            db_table = 'Task'
+            db_table = 'Kanban_Task'
             
     def __repr__(self): #개발자끼리의 공유(보여주기용) <-> str
             return self.user_id +':' +self.title #task tile과 name이 뜸            

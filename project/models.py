@@ -9,7 +9,7 @@ class Project(ModelBased):
     user_id=models.ManyToManyField(User, related_name='user')   #다대다 
 #specify table name
     class Meta:
-        db_table = 'Project'
+        db_table = 'Kanban_Project'
 
     def __repr__(self):
         return self.s_name 
