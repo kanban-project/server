@@ -4,6 +4,8 @@ from project.models import Project
 from base.models import ModelBased
 
 
+
+
 class Task(ModelBased):
     id=models.AutoField(primary_key=True)
 #     author=models.ManyToManyField(User, related_name='author')   #다대다 
@@ -12,19 +14,20 @@ class Task(ModelBased):
                                  related_name='project')#다대일
     title=models.TextField(max_length=200, blank=False)
     description=models.TextField() #long text
-    due_date=models.DateTimeField(null=True)
+    due_date=models.DateField(null=True)
     status_choices = (
             (1,'Open'),
-            (2,'InProgress'),
+            (2,'InProgress'),   
             (3,'Completed'),
             (4,'closed')
     )
     status=models.SmallIntegerField(default=1, choices=status_choices)
     priority_choices = (
-            (1,'PM'),
-            (2,'SELF')
+            (1,'high'),
+            (2,'middle'),
+            (3, 'low')
     )
-    priority=models.SmallIntegerField(default=1, choices=priority_choices)
+    priority=models.SmallIntegerField(default='middle', choices=priority_choices)
 
 #specify table name     
     class Meta:
