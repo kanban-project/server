@@ -58,7 +58,10 @@ MIDDLEWARE = [
 ]
 
 # CORS_ORIGIN_WHITELIST = ['localhost:8000']
-
+CORS_ORIGIN_ALLOW_ALL=True
+CORS_ALLOW_CREDENTIALS=True
+#허용된 ip주소 
+ALLOWED_HOSTS=["*"] 
 
 ROOT_URLCONF = 'config.urls'
 

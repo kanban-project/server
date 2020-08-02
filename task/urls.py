@@ -8,6 +8,3 @@ urlpatterns = [
     path("project/<int:project>", Project_TaskList.as_view(), name=Project_TaskList.name),
     path("project/<int:project>/status/<int:status>", Project_Task_Status.as_view(), name=Project_Task_Status.name)
 ]
-
-
-

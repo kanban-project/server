@@ -21,7 +21,7 @@ class Project_TaskList(generics.ListAPIView):
     serializer_class = TaskSerializer
     name = 'Project_TaskList'
     def get_queryset(self):
-        return Task.objects.filter(project_id=self.kwargs['project'])
+        return Task.objects.filter()
         # ,status=self.kwargs['status'])
         
 class Project_Task_Status(generics.ListAPIView):
@@ -29,7 +29,7 @@ class Project_Task_Status(generics.ListAPIView):
     serializer_class = TaskSerializer
     name= 'Project_Task_Status'
     def get_queryset(self):
-        return Task.objects.filter(status=self.kwargs['status'])
+        return Task.objects.filter(project_id=self.kwargs['project']).filter(status=self.kwargs['status'])
 
 
 
